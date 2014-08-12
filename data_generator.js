@@ -11,6 +11,14 @@ streams.users.shawndrost = []; // username array in users property
 streams.users.sharksforcheap = []; // username array in users property
 streams.users.mracus = []; // username array in users property
 streams.users.douglascalhoun = []; // username array in users property
+streams.users.shawndrost.time = []; // timestamp array in users property
+streams.users.sharksforcheap.time = []; // timestamp array in users property
+streams.users.mracus.time = []; // timestamp array in users property
+streams.users.douglascalhoun.time = []; // timestamp array in users property
+streams.users.shawndrost.image = '/images/JS7Tixp.png';
+streams.users.sharksforcheap.image = '/images/UFP60wK.gif';
+streams.users.mracus.image = '/images/tumblr_n7kzs1voHo1qhnszoo1_400.gif';
+streams.users.douglascalhoun.image = '/images/nM04wNS.gif';
 window.users = Object.keys(streams.users); // populates users property of windows with array of usernames [shawndrost,sharksforcheap,...]
 
 // utility function for adding tweets to our data structures
@@ -18,6 +26,7 @@ var addTweet = function(newTweet){ // newTweet is a string comprised of a tweet
   var username = newTweet.user; // gets username from user property of tweet in generateRandomTweet
   streams.users[username].push(newTweet); // pushes newTweet to username array
   streams.home.push(newTweet); // pushes newTweet to home property array
+  streams.users[username].time.push(new Date() / 1000);
 };
 
 // utility function
@@ -43,7 +52,7 @@ var generateRandomTweet = function(){
   tweet.user = randomElement(users); // assigns a random user for user property of tweet
   tweet.message = randomMessage(); // generates random tweet for message property of tweet
   tweet.created_at = new Date(); // generates current timestamp for tweet
-  addTweet(tweet); // inintializes addTweet inside the scope of generateRandomTweet
+  addTweet(tweet); // initializes addTweet inside the scope of generateRandomTweet
 };
 
 for(var i = 0; i < 10; i++){
@@ -52,16 +61,13 @@ for(var i = 0; i < 10; i++){
 
 var scheduleNextTweet = function(){
   generateRandomTweet();
-  setTimeout(scheduleNextTweet, Math.random() * 1500); // generates random tweet every 1.5s or less
+  setTimeout(scheduleNextTweet, 4000 + Math.random() * 5000); // generates random tweet every 10s or less
 };
 scheduleNextTweet();
 
 // utility function for letting students add "write a tweet" functionality
 // (note: not used by the rest of this file.)
-var writeTweet = function(message){
-  if(!visitor){
-    throw new Error('set the global visitor property!');
-  }
+var writeTweet = function(message,visitor){
   var tweet = {};
   tweet.user = visitor;
   tweet.message = message;

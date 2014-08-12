@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="jquery.js"></script>
+	<title>Twittler</title>
+	<link rel="stylesheet" href="squaregrid.css">
+	<link rel="stylesheet" href="twitt-css.css">
+	<script src="jquery.js"></script>
     <script src="data_generator.js"></script>
   </head>
   <body>
-  
+  <div id="wrapper">
+		<div class='sg-16 banner-container'>
+			<h1 id="banner">Twittler <span class="subtitle">kind of like twitter</span></h1>
+		</div>
+		<div class='login-container'>
+			create account
+		</div>
+		<div style='clear:both'></div>
+	<div id='new-twits' class='sg-12'>
+	<h2 class='feed-title'>HUNGRY 4 NEW TWITTS?</h2>
+		<section id="twits"></section>
+	</div>
+	<div id='profile-view' class="sg-20">
+		<section class='profile-help'>CLICK ON <span class="placeholder">USERNAME</span> 4 FEED</section>
+		<section id='profile-image'></section>
+		<section id='profile-name'></section>
+		<section id='profile-twits'></section>
+	</div>
+	
+	
+  </div>
     <script src="twittler.js"></script>
   </body>
 </html>
